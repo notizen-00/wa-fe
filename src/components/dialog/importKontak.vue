@@ -1,14 +1,14 @@
 <template>
     <v-row justify="center">
       <v-dialog
-        v-model="isOverlayActive"
+        v-model="isDialogActive"
         persistent
         width="1024"
       >
         <v-card>
-          <form @submit.prevent="saveKontak()">
+          <form @submit.prevent="saveKontak()" enctype= multipart/form-data>
           <v-card-title>
-            <span class="text-h5">Data Kontak </span>
+            <span class="text-h5">Import Kontak </span>
 
 
           </v-card-title>
@@ -22,31 +22,16 @@
                   sm="6"
                   md="6"
                 >
-                <v-text-field
-                    v-model="form.nama"
-                    label="Nama Kontak *"
-                    required
-                    placeholder="isikan nama kontak ...."
-                  ></v-text-field>
+                <v-file-input
+                clearable
+                prepend-icon="fas fa-file-csv"
+                label="Upload File CSV"
+                v-model="form.file"
+              ></v-file-input>
                 </v-col>
                 
               </v-row>
 
-              <v-row>
-                <v-col
-                  cols="12"
-                  sm="6"
-                  md="6"
-                >
-                  <v-text-field
-                    v-model="form.no_hp"
-                    label="No Hp *"
-                    required
-                    placeholder="gunakan nomor yang valid ..."
-                  ></v-text-field>
-                  <span class="text-red mr-3">*</span><small>Gunakan Awalan Kode Negara Misal = <u>6285*****</u></small>
-                </v-col>
-              </v-row>
 
               
 
@@ -54,7 +39,7 @@
               <br>
               
             </v-container>
-            <small>*no Hp wajib di isi </small>
+            <small>*File Import wajib berextensi csv </small>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -63,7 +48,7 @@
               variant="text"
               type="button"
               
-              @click="store.kontakStore.toggleOverlay()"
+              @click="store.kontakStore.toggleDialog()"
             >
               Close
             </v-btn>
@@ -72,7 +57,7 @@
               variant="text"
               type="submit"
             >
-              Kirim 
+              Import
             </v-btn>
           
           </v-card-actions>
@@ -87,19 +72,18 @@
     import {storeToRefs} from 'pinia'
     const store = inject('store')
     
-    const {isOverlayActive} = storeToRefs(store.kontakStore)
+    const {isDialogActive} = storeToRefs(store.kontakStore)
     const {getQr,getError,getListKoneksi} = storeToRefs(store.authStore)
     const select = ref()
     
-    const form = ref({  
-        nama:'',
-        no_hp:''
+    const form = ref({
+        file:''
     })
 
     const saveKontak = async() =>{
 
-      await store.kontakStore.saveKontak(form.value)
-        
+      await store.kontakStore.importKontak(form.value.file)
+        console.log(form.value.file[0])
 
     }
     onMounted(()=>{

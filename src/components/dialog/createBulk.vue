@@ -8,7 +8,7 @@
         <v-card>
           <form @submit.prevent="sendMessage()">
           <v-card-title>
-            <span class="text-h5">Kirim Pesan </span>
+            <span class="text-h5">Kirim Pesan Massal </span>
 
             
           </v-card-title>
@@ -55,7 +55,7 @@
               prepend-inner-icon="fa-duotone fa-address-book"
               item-title="nama"
               item-value="no_hp"
-              label=" -- Pilih Kontak --"
+              label=" -- Pilih Group --"
               persistent-hint
               clearable
               required
@@ -107,7 +107,7 @@
               variant="text"
               type="button"
               
-              @click="store.pesanStore.toggleOverlay()"
+              @click="store.bulkStore.toggleOverlay()"
             >
               Close
             </v-btn>
@@ -131,7 +131,7 @@
     import {storeToRefs} from 'pinia'
     const store = inject('store')
     
-    const {isOverlayActive} = storeToRefs(store.pesanStore)
+    const {isOverlayActive} = storeToRefs(store.bulkStore)
     const {getListKontak} = storeToRefs(store.kontakStore)
     const {getQr,getError,getListKoneksi} = storeToRefs(store.authStore)
     const selectedKontak = ref(null);

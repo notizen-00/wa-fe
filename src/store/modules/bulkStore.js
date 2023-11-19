@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios';
 import  router from '@/router'
 import { useAuthStores } from './authStore';
-export const usePesanStores = defineStore('pesanStore', {
+export const useBulkStores = defineStore('bulkStore', {
   state: () => ({
     overlay: false,
     url:import.meta.env.VITE_APP_API_URL,
@@ -36,7 +36,7 @@ export const usePesanStores = defineStore('pesanStore', {
         this.pesan = response.data.data.listData
         console.log(response.data.data.listData)
     },
-    async pesan_single(data){
+    async pesan_bulk(data){
 
         const response = await axios.post(this.url+'send-message',{
             to:data.to,

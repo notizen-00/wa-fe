@@ -9,7 +9,8 @@
           
         <v-container>
             <div class="w-full text-end">
-            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" color="primary" @click="store.pesanStore.toggleOverlay()">Tambah Kontak</v-btn>
+            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" color="primary" @click="store.kontakStore.toggleOverlay()">Tambah Kontak</v-btn>
+            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-file-csv" color="red" @click="store.kontakStore.toggleDialog()">Import</v-btn>
             </div>
           
             <TableKontak></TableKontak>
@@ -18,7 +19,7 @@
     
        
         <createKontak></createKontak>
-    
+        <importKontak></importKontak>
         </template>
       
     
@@ -30,9 +31,12 @@
     import breadcrumb from '@/components/breadcrumb/breadcrumb.vue';
     import TableKontak from '../../components/table/TableKontak.vue';
     import createKontak from '@/components/dialog/createKontak.vue';
+    import importKontak from '@/components/dialog/importKontak.vue';
     import { storeToRefs } from 'pinia';
     const store = inject('store')
 
-
+    onMounted(async()=>{
+        await store.kontakStore.fetchKontak();
+    })
     
     </script>
