@@ -9,7 +9,7 @@
           
         <v-container>
             <div class="w-full text-end">
-            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" @click="store.pesanStore.toggleOverlay()">Kirim Pesan</v-btn>
+            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" color="primary" @click="store.pesanStore.toggleOverlay()">Kirim Pesan</v-btn>
             </div>
           
             <TablePesan></TablePesan>
@@ -18,6 +18,7 @@
     
        
         <createPesan></createPesan>
+        <!-- <SnackBar></SnackBar> -->
     
         </template>
       
@@ -28,6 +29,7 @@
     import AppLayout from '@/layouts/AppLayout.vue';
     import {inject,onMounted} from 'vue'
     import breadcrumb from '@/components/breadcrumb/breadcrumb.vue';
+    import SnackBar from '@/components/snackbar/SnackBar.vue';
     import TablePesan from '../../components/table/TablePesan.vue';
     import createPesan from '@/components/dialog/createPesan.vue';
     import { storeToRefs } from 'pinia';

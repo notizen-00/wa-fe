@@ -42,68 +42,16 @@
         <span class="font-semibold text-sm">Kirim Pesan</span>
     </v-list-item>
     </router-link>
-
-
-
-         <router-link to="/history_pesan" >
-            <v-list-item color="primary" class="mb-2">
-            <template #prepend>
-                <v-icon size="small" :class="rail ? '' : 'ml-2'">fas fa-clock-rotate-left</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Riwayat Pesan</span>
-             </v-list-item>
-             </router-link>
-
-      <v-list-item color="primary"   @click.prevent="expand_karyawan = !expand_karyawan" value="karyawan">
+             <router-link to="/kontak" >
+      <v-list-item color="primary" value="karyawan">
         <template #prepend>
             <v-icon size="small" :class="rail ? '' : 'ml-2'">fas fa-user-group</v-icon>
         </template>
-        <template #append>
-            <v-icon size="15" >{{ expand_karyawan ? 'fas fa-caret-down' : 'fas fa-caret-right' }}</v-icon>
-        </template>
+
         <span class="font-semibold text-sm">Data Kontak</span>
       </v-list-item>
-      <v-expand-transition>
-        <v-list density="compact">
-            <router-link to="/kelola_karyawan/divisi">
-        <v-list-item rounded="xl" v-show="expand_karyawan"  value="divisi">
-            <template #prepend>
-                <v-icon size="10"  :class="rail ? '' : 'pl-10'">fas fa-minus</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Divisi</span>
-        </v-list-item>
-        </router-link>
-        <router-link to="/kelola_karyawan/karyawan">
-        <v-list-item rounded="xl" v-show="expand_karyawan"  value="data_karyawan">
-            <template #prepend>
-                <v-icon size="10"  :class="rail ? '' : 'pl-10'">fas fa-minus</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Data Karyawan</span>
-        </v-list-item>
-        </router-link>
-        <router-link to="/kelola_karyawan/lokasi">
-        <v-list-item rounded="xl" v-show="expand_karyawan"  value="lokasi_kehadiran">
-            <template #prepend>
-                <v-icon size="10"  :class="rail ? '' : 'pl-10'">fas fa-minus</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Lokasi Kehadiran</span>
-        </v-list-item>
-        </router-link>
-        <v-list-item rounded="xl" v-show="expand_karyawan"  value="jadwal hari kerja">
-            <template #prepend>
-                <v-icon size="10"  :class="rail ? '' : 'pl-10'">fas fa-minus</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Jadwal Hari Kerja</span>
-        </v-list-item>
-        <v-list-item rounded="xl" v-show="expand_karyawan"  value="jadwal shift">
-            <template #prepend>
-                <v-icon size="10"  :class="rail ? '' : 'pl-10'">fas fa-minus</v-icon>
-            </template>
-            <span class="font-semibold text-sm">Jadwal Shift</span>
-        </v-list-item>
-        </v-list>
-      </v-expand-transition>
-      </v-list>
+    </router-link>
+    </v-list>
     <!-- <v-list  density="compact" class="mt-5" nav>
         <router-link to="/dashboard" >
         <v-list-item color="primary" :active="$page.url === '/dashboard'">

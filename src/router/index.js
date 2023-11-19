@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/App/Beranda.vue'
 import Login from '@/pages/Auth/Login.vue'
 import Pesan from '@/pages/App/Pesan.vue'
+import Kontak from '@/pages/App/Kontak.vue'
 import { useStore } from '@/Store/modules'
 
 const routes = [
@@ -14,6 +15,11 @@ const routes = [
       path:'/pesan',
       name:'Pesan',
       component:Pesan
+    },
+    {
+      path:'/kontak',
+      name:'Kontak',
+      component:Kontak
     },
     {
       path: '/dashboard',

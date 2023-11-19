@@ -8,12 +8,10 @@
         <v-card>
           <form @submit.prevent="sendMessage()">
           <v-card-title>
-            <span class="text-h5">Kirim Pesan </span>
+            <span class="text-h5">Data Kontak </span>
 
-            
+
           </v-card-title>
-      
-          
       
           <v-card-text>
             <v-container>

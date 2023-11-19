@@ -5,6 +5,7 @@ import { useAuthStores } from './authStore';
 export const usePesanStores = defineStore('pesanStore', {
   state: () => ({
     overlay: false,
+    url:import.meta.env.VITE_APP_API_URL,
     cardDashboard: [
         {
           title: 'Device',
@@ -27,6 +28,23 @@ export const usePesanStores = defineStore('pesanStore', {
   actions: {
     toggleOverlay(){
         this.overlay = !this.overlay
+    },
+    async pesan_single(data){
+
+        const response = await axios.post(this.url+'send-message',{
+            to:data.to,
+            session:data.session.detail_session,
+            text:data.text
+        });
+        // console.log(response.data.data.status)
+
+        
+        if(response.data.data.status == 1){
+          alert('selamat')
+          this.overlay = false;
+        }
+
+
     }
     
 

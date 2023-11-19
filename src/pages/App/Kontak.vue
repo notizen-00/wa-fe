@@ -9,15 +9,15 @@
           
         <v-container>
             <div class="w-full text-end">
-            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" @click="store.pesanStore.toggleOverlay()">Import Kontak</v-btn>
+            <v-btn class="m-3 ml-auto" prepend-icon="fas fa-plus" color="primary" @click="store.pesanStore.toggleOverlay()">Tambah Kontak</v-btn>
             </div>
           
-            <TablePesan></TablePesan>
+            <TableKontak></TableKontak>
             <!-- <iframe src="https://wa.oxva.eu.org/start-session?session=Test&scan=true" width="400" height="300"></iframe> -->
         </v-container>
     
        
-        <createPesan></createPesan>
+        <createKontak></createKontak>
     
         </template>
       
@@ -28,8 +28,8 @@
     import AppLayout from '@/layouts/AppLayout.vue';
     import {inject,onMounted} from 'vue'
     import breadcrumb from '@/components/breadcrumb/breadcrumb.vue';
-    import TablePesan from '../../components/table/TablePesan.vue';
-    import createPesan from '@/components/dialog/createPesan.vue';
+    import TableKontak from '../../components/table/TableKontak.vue';
+    import createKontak from '@/components/dialog/createKontak.vue';
     import { storeToRefs } from 'pinia';
     const store = inject('store')
 
